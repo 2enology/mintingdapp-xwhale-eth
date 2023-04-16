@@ -1,1 +1,1 @@
-# mintingdapp-xwhale-eth
+# Xwhale Founder Project
