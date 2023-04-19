@@ -31,7 +31,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full text-center border-t-[1px] border-gray-100 border-opacity-40 py-10">
-      {/* <div className="text-white">
+      <div className="text-white">
         Join our{" "}
         <a
           className="font-bold text-yellow-300 duration-300 cursor-pointer hover:text-yellow-500 hover:underline"
@@ -51,15 +51,15 @@ export default function Footer() {
           Discord{" "}
         </a>
         to stay up to date.
-      </div> */}
-      {/* {isVisible && (
+      </div>
+      {isVisible && (
         <div
           className="fixed bottom-10 right-10 p-3 bg-black border-[1px] border-white border-dashed cursor-pointer animate-bounce"
           onClick={() => scrollToTop()}
         >
           <Gricon.GrArchlinux color="white" />
         </div>
-      )} */}
+      )}
     </footer>
   );
 }

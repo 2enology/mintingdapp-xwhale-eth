@@ -53,7 +53,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full h-[80px] flex justify-between lg:px-[100px] md:px-[20px] fixed z-[49] py-[14px] items-center px-4">
+    <header className="w-full h-[80px] flex justify-between 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[20px] fixed z-[49] py-[14px] items-center px-4">
       <Head>
         <link rel="icon" href="/img/logo.png" />
       </Head>
@@ -70,24 +70,41 @@ export default function Header() {
         className="items-center h-full px-4 py-5 text-white border-[1px] border-gray-400 rounded-lg text-whitebg-white backdrop-blur-sm bg-opacity-10 bg-white hidden md:flex
       justify-between lg:gap-10 md:gap-3"
       >
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
-          Home
-        </p>
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
+        <Link href={`/`} passHref>
+          <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
+            Home
+          </p>
+        </Link>
+        <a
+          href="#about"
+          className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500"
+        >
           About
-        </p>
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
-          RoadMap
-        </p>
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
+        </a>
+        <a
+          href="#collection"
+          className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500"
+        >
           Collection
-        </p>
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
+        </a>
+        <a
+          className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500"
+          href="#roadmap"
+        >
+          RoadMap
+        </a>
+        <a
+          className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500"
+          href="#collection"
+        >
           Team
-        </p>
-        <p className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500">
+        </a>
+        <a
+          className="font-normal text-white transition-all duration-300 cursor-pointer text-md hover:text-green-500"
+          href="#collection"
+        >
           Contact
-        </p>
+        </a>
       </div>
 
       <div className="flex items-center">

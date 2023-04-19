@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import { ToastContainer } from "react-toastify";
-import PageLoading from "../components/PageLoading";
 import "../styles/style.scss";
 
 import { Web3ReactProvider } from "@web3-react/core";
@@ -32,14 +31,9 @@ function StakingApp({ Component, pageProps }) {
     >
       <Web3ReactProvider getLibrary={getLibrary} chainId={getChainId}>
         <Header />
-        <Component
-          {...pageProps}
-          startLoading={() => setLoading(true)}
-          closeLoading={() => setLoading(false)}
-        />
+        <Component {...pageProps} />
         <ToastContainer style={{ fontSize: 14 }} />
-        <PageLoading loading={loading} />
-        {/* <Footer /> */}
+        <Footer />
       </Web3ReactProvider>
     </motion.section>
   );
