@@ -23,6 +23,7 @@ import {
 import { useWeb3React } from "@web3-react/core";
 import { errorAlert, successAlert } from "../components/toastGroup";
 import { WindowWithEthereum } from "../types";
+import { stat } from "fs";
 
 export default function Claim() {
   const { account } = useWeb3React();
@@ -34,7 +35,7 @@ export default function Claim() {
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const [pendingStakingReward, setPendingStakingReward] = useState<number>(0);
   const [onBoarding, setOnBoardingState] = useState<boolean>(false);
-  const [royaltyClaimState, setRoyaltyClaimState] = useState<boolean>(true);
+  const [royaltyClaimState, setRoyaltyClaimState] = useState<boolean>(false);
   const [lastClaimState, setLastClaimState] = useState<number>(0);
   const [loadingState, setLoadingState] = useState<boolean>(false);
 
@@ -75,11 +76,11 @@ export default function Claim() {
     setTotalSupply(Number(counts));
     const amount = await MINTCONTRACT.claimableAmount(account);
     setClaimableAmount(
-      Number(parseFloat(ethers.utils.formatEther(amount.toString())).toFixed(5))
+      Number(parseFloat(ethers.utils.formatEther(amount.toString())).toFixed(2))
     );
     const reward = await MINTCONTRACT.getLifetimeRewards(account);
     setLifeTimeReward(
-      Number(parseFloat(ethers.utils.formatEther(reward.toString())).toFixed(5))
+      Number(parseFloat(ethers.utils.formatEther(reward.toString())).toFixed(2))
     );
   };
 
@@ -87,23 +88,24 @@ export default function Claim() {
     const royalty = await ROYALTYCONTRACT.getTotalRewardsForAddress(account);
     setRoyaltyReward(
       Number(
-        parseFloat(ethers.utils.formatEther(royalty.toString())).toFixed(4)
+        parseFloat(ethers.utils.formatEther(royalty.toString())).toFixed(2)
       )
     );
     const state = await ROYALTYCONTRACT.hasClaimedAllRewards(account);
     setRoyaltyClaimState(state);
+    console.log("setRoyaltyClaimState", state);
   };
 
   const getStakingAmount = async () => {
     const token = await TOKENCOUNTRACT.balanceOf(account);
     setTokenAmount(
-      Number(parseFloat(ethers.utils.formatEther(token.toString())).toFixed(4))
+      Number(parseFloat(ethers.utils.formatEther(token.toString())).toFixed(2))
     );
     const pendingReward = await STAKINGCONTRACT.getPendingRewards(account);
     setPendingStakingReward(
       Number(
         parseFloat(ethers.utils.formatEther(pendingReward.toString())).toFixed(
-          4
+          2
         )
       )
     );
@@ -254,24 +256,24 @@ export default function Claim() {
               <h1 className="font-bold text-right text-white cursor-pointer">{`<- Back to Home`}</h1>
             </div>
           </Link>
-          <div className=" w-full gap-4 mt-10 flex flex-col">
+          <div className="flex flex-col w-full gap-4 mt-10 ">
             <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm relative flex flex-col items-start md:items-center justify-center min-h-[30vh]">
               <div className="absolute top-0 bottom-0 -z-[1] left-0 right-0 flex items-center justify-center">
                 <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[45px] font-bold text-red-400 opacity-60">
                   15% Claim
                 </h1>
               </div>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Total NFTs: {totalSupply}s
               </h1>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Claimable rewards: {claimableAmount}
               </h1>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Lifetime rewards: {lifeTimeReward}
               </h1>
               <div
-                className="w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400 bottom-0 absolute left-0 right-0"
+                className="absolute bottom-0 left-0 right-0 w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400"
                 onClick={() => handleMintRewardFunc()}
               >
                 Claim Now
@@ -283,19 +285,23 @@ export default function Claim() {
                   10% Royalty
                 </h1>
               </div>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Total NFTs: {totalSupply}s
               </h1>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Claimable amount:{royaltyReward}
               </h1>
-              {!royaltyClaimState && (
+              {!royaltyClaimState ? (
                 <div
-                  className="w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400  bottom-0 absolute left-0 right-0"
+                  className="absolute bottom-0 left-0 right-0 w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400"
                   onClick={() => handleRoyaltyClaim()}
                 >
                   Claim Now
                 </div>
+              ) : (
+                <h1 className="text-2xl font-bold text-yellow-300">
+                  rewards claimed, wait for new rewards
+                </h1>
               )}
             </div>
             <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm relative  flex flex-col items-start md:items-center justify-center min-h-[30vh]">
@@ -304,16 +310,16 @@ export default function Claim() {
                   Staking
                 </h1>
               </div>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Total GFLR token: {tokenAmount}
               </h1>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Total NFTs: {totalSupply}
               </h1>
-              <h1 className="text-white md:text-3xl text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
                 Claimable rewards: {pendingStakingReward}
               </h1>
-              <div className="w-full flex gap-2 absolute left-0 right-0 bottom-0">
+              <div className="absolute bottom-0 left-0 right-0 flex w-full gap-2">
                 {lastClaimState === 0 && (
                   <div
                     className={`w-full py-4 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400`}
