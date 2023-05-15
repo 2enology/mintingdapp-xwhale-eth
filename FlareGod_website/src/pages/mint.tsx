@@ -19,6 +19,7 @@ import {
 } from "../config";
 import { useWeb3React } from "@web3-react/core";
 import { successAlert } from "../components/toastGroup";
+import { WindowWithEthereum } from "../types";
 
 export default function Mint() {
   const settings = {
