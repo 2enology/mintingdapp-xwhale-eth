@@ -10,7 +10,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 html {
   font-family: 'Orbitron', sans-serif;
+  scroll-behavior: smooth !important;
+
 }
+
 
 // .container {
 //   background-image: url('/img/homeBackground.png') !important;
@@ -25,6 +28,7 @@ html {
 //   justify-content: center;
 //   overflow: hidden;
 // }
-.bg-black {
-  background-color: black !important;
+body {
+  background-color: #0c1226 !important;
+  overflow-y: scroll;
 }

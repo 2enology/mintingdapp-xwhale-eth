@@ -30,12 +30,12 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full text-center border-t-[1px] border-gray-100 border-opacity-40 py-10">
+    <footer className="w-full text-center border-t-[1px] border-gray-100 border-opacity-40 py-10 mt-10">
       <div className="text-white">
-        Join our{" "}
+        copyright @2023 Join our{" "}
         <a
           className="font-bold text-yellow-300 duration-300 cursor-pointer hover:text-yellow-500 hover:underline"
-          href="https://twitter.com/beasty_bits"
+          href="https://twitter.com/Flaregods"
           target="_blank"
           rel="noreferrer"
         >
@@ -44,13 +44,13 @@ export default function Footer() {
         &{" "}
         <a
           className="font-bold text-yellow-300 duration-300 cursor-pointer hover:text-yellow-500 hover:underline"
-          href="https://discord.gg/5AhU6N7spB"
+          href="https://discord.gg/auUGNVSpKb"
           target="_blank"
           rel="noreferrer"
         >
-          Discord{" "}
-        </a>
-        to stay up to date.
+          Discord
+        </a>{" "}
+        to know more about us
       </div>
       {isVisible && (
         <div
