@@ -10,6 +10,9 @@ import About from "./about";
 import Collection from "./collection";
 import RoadMap from "./roadmap";
 import Team from "./team";
+import { Bounce } from "react-awesome-reveal";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const settings = {
   dots: false,
@@ -24,30 +27,46 @@ const settings = {
 };
 
 const Home: NextPage = () => {
-  const { account } = useWeb3React();
   return (
-    <>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.9, delay: 0.2 }}
+    >
       <section className="relative flex flex-col w-full" id="#home">
         <img
           src="/img/home.jpg"
-          className="object-cover w-full md:min-h-screen lg:min-h-[120vh] xl:min-h-screen min-h-[120vh] -z-10"
+          className="fixed top-0 bottom-0 object-cover w-full h-full rounded-lg -z-10"
         />
-        <div className="2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[100px] px-5 absolute mt-[100px] lg:mt-[200px] flex lg:flex-row flex-col-reverse w-full gap-5">
-          <div>
-            <h1 className="2xl:text-[65px] xl:text-[55px] lg:text-[50px] md:text-[40px] text-[30px] font-extrabold text-white text-center lg:text-left">
-              CYBOX NFT <br />
-              COLLECTIONS
-              <br /> FOR EVERYONE
-            </h1>
-            <p className="text-center text-gray-400 lg:text-left">
-              Nulla ornare sagittis placerat nunc sit tempus enim. Accumsan
-              <br />
-              pellentesque ipsum felis tristique at proin vel turpis.
-            </p>
-            <button className="w-full px-10 py-3 mt-10 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
-              Mint now
-            </button>
-          </div>
+        <div className="2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[100px] px-5 mt-[100px] lg:mt-[200px] flex lg:flex-row flex-col-reverse w-full gap-5 pb-10">
+          <Bounce>
+            <div>
+              <h1 className="2xl:text-[65px] xl:text-[55px] lg:text-[50px] md:text-[40px] text-[30px] font-extrabold text-white text-center lg:text-left">
+                FlareGod NFTs FOR EVERYONE
+              </h1>
+              <p className="text-center text-gray-400 lg:text-left">
+                Welcome to Flaregods, 5000 unique and intricately designed
+                Flaregods warriors.
+              </p>
+              <div className="flex flex-col items-center justify-center gap-2 md:justify-start md:flex-row">
+                <Link href="/mint" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Mint
+                  </button>
+                </Link>
+                <Link href="/claim" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Claim
+                  </button>
+                </Link>
+                <Link href="/discord" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Discord
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </Bounce>
           <div className="flex items-center justify-center w-full lg:justify-end">
             <div className="xl:w-[500px] lg:w-[400px] w-[350px] md:w-[500px] p-2">
               <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm">
@@ -73,7 +92,7 @@ const Home: NextPage = () => {
       <Collection />
       <RoadMap />
       <Team />
-    </>
+    </motion.section>
   );
 };
 

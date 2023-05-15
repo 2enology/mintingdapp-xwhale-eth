@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Fade } from "react-awesome-reveal";
 export default function RoadMap() {
   const settings = {
     dots: true,
@@ -63,31 +64,32 @@ export default function RoadMap() {
   return (
     <section
       id="roadmap"
-      className="border-b-[1px] border-gray-800 border-dashed"
+      className="border-b-[1px] border-gray-800 border-dashed bg-[#141a31] bg-opacity-70 backdrop-blur-sm pb-10"
     >
       <div className="w-full min-h-[70vh] 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[100px] px-5 pb-5">
-        <h1 className="text-[50px] md:text-[75px] text-gray-800 text-center font-extrabold mt-10 uppercase">
-          {" "}
-          RoadMap
-        </h1>
-        <p className="text-2xl text-center text-green-500 -mt-[70px] font-bold uppercase">
-          ROADMAP OF COMPANY
-        </p>
+        <Fade direction="down">
+          <h1 className="text-[50px] md:text-[75px] text-white text-center font-extrabold py-20 uppercase z-20">
+            {" "}
+            RoadMap
+          </h1>
+          <p className="text-2xl text-center text-green-500 -mt-[130px] md:-mt-[150px] font-bold uppercase z-10">
+            ROADMAP OF COMPANY
+          </p>
+        </Fade>
 
         <div className="flex flex-col gap-5 mt-10">
           <h1 className="text-xl text-center text-gray-400 uppercase md:text-3xl">
-            Our mission is simple: We want to be first Doodle NFTs creators on
-            Flare network & provide with the best NFTs utilities - NFT breeding,
-            NFT staking & Bunny token farming .
+            Our mission is provide best art on Flare network & provide the best
+            NFTs utilities.
           </h1>
         </div>
-        <div className="mt-10">
-          <Slider {...settings} className="">
+        <div className="z-50 mt-10">
+          <Slider {...settings} className="z-50">
             <div className="px-3">
-              <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col">
+              <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col rounded-md">
                 <div className="border-r-[1px] border-[#14c2a3]">
                   <h1 className="flex items-center justify-center h-full p-3 text-3xl font-bold text-white lg:justify-start lg:-rotate-90 lg:transform">
-                    phase 1
+                    Idea
                   </h1>
                 </div>
                 <div className="flex items-center justify-center p-5">
@@ -99,20 +101,22 @@ export default function RoadMap() {
                 </div>
                 <div className="flex flex-col items-start justify-start h-full gap-5 p-10">
                   <h3 className="text-white text-[30px] font-bold">
-                    Project Marketing & NFT Minting
+                    Concept development & Team assembly:
                   </h3>
-                  <h4 className="text-[#14c2a3]">Q1 2023</h4>
+                  <h4 className="text-[#14c2a3]">Q2 2023</h4>
                   <p className="text-lg text-gray-400">
-                    - NFT Marketing on Twitter/Discord.
+                    - Identify the project's purpose and vision.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Development of ERC-721 smart contract & Audit.
+                    - Research existing NFT projects to gather ideas and
+                    inspiration.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Minting dApp frontEnd development & testing.
+                    - Define your target audience.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Launch our first Doodle Bunny NFT collection.
+                    - Recruit team members with the necessary skills, including
+                    artists, developers.
                   </p>
                 </div>
               </div>
@@ -121,7 +125,7 @@ export default function RoadMap() {
               <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col">
                 <div className="border-r-[1px] border-[#14c2a3]">
                   <h1 className="flex items-center justify-center h-full p-3 text-3xl font-bold text-white lg:justify-start lg:-rotate-90 lg:transform">
-                    phase 1
+                    Design
                   </h1>
                 </div>
                 <div className="flex items-center justify-center p-5">
@@ -132,21 +136,23 @@ export default function RoadMap() {
                   />
                 </div>
                 <div className="flex flex-col items-start justify-start h-full gap-5 p-10">
-                  <h3 className="text-white text-[30px] font-bold">
-                    Project Marketing & NFT Minting
+                  <h3 className="text-white md:text-[30px] text-[20px] font-bold">
+                    Tokenomics design & Project marketing
                   </h3>
-                  <h4 className="text-[#14c2a3]">Q1 2023</h4>
+                  <h4 className="text-[#14c2a3]">Q2 2023</h4>
                   <p className="text-lg text-gray-400">
                     - NFT Marketing on Twitter/Discord.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Development of ERC-721 smart contract & Audit.
+                    - Determine the total supply of NFTs.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Minting dApp frontEnd development & testing.
+                    - Plan for future updates, expansions, or improvements to
+                    the NFT ecosystem.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Launch our first Doodle Bunny NFT collection.
+                    - Develop the overall aesthetic and visual style of the
+                    NFTs.
                   </p>
                 </div>
               </div>
@@ -155,7 +161,7 @@ export default function RoadMap() {
               <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col">
                 <div className="border-r-[1px] border-[#14c2a3]">
                   <h1 className="flex items-center justify-center h-full p-3 text-3xl font-bold text-white lg:justify-start lg:-rotate-90 lg:transform">
-                    phase 1
+                    Mint
                   </h1>
                 </div>
                 <div className="flex items-center justify-center p-5">
@@ -167,26 +173,45 @@ export default function RoadMap() {
                 </div>
                 <div className="flex flex-col items-start justify-start h-full gap-5 p-10">
                   <h3 className="text-white text-[30px] font-bold">
-                    Project Marketing & NFT Minting
+                    Community building & NFT Minting
                   </h3>
-                  <h4 className="text-[#14c2a3]">Q1 2023</h4>
+                  <h4 className="text-[#14c2a3]">Q2 2023</h4>
                   <p className="text-lg text-gray-400">
-                    - NFT Marketing on Twitter/Discord.
+                    - NFT Marketing on Twitter/Discord & Engage with potential
+                    users and influencers in the NFT space
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Development of ERC-721 smart contract & Audit.
+                    - Develop smart contracts for minting, claiming, and
+                    managing the NFTs.
                   </p>
                   <p className="text-lg text-gray-400">
                     - Minting dApp frontEnd development & testing.
                   </p>
                   <p className="text-lg text-gray-400">
-                    - Launch our first Doodle Bunny NFT collection.
+                    - Launch our first FlareGods collection.
+                  </p>
+                  <p className="text-lg text-gray-400">
+                    - Support & Community building.
                   </p>
                 </div>
               </div>
             </div>
           </Slider>
         </div>
+      </div>
+      <div className="absolute top-0 bottom-0 md:min-h-screen lg:min-h-[120vh] xl:min-h-[60vh] min-h-[120vh] area z-10">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </section>
   );

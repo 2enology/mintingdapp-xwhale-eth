@@ -1,3 +1,9 @@
+import { InjectedConnector } from "@web3-react/injected-connector";
+
+export const injected = new InjectedConnector({
+  supportedChainIds: [16],
+});
+
 const switchNetworkRequest = () =>
   (window as any).ethereum.request({
     method: "wallet_switchEthereumChain",

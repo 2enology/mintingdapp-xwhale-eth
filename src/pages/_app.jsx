@@ -1,13 +1,14 @@
 import { useState } from "react";
-import Header from "../components/Header";
 import { ToastContainer } from "react-toastify";
-import "../styles/style.scss";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 import { Web3ReactProvider } from "@web3-react/core";
 import { ethers } from "ethers";
 import { motion } from "framer-motion";
 
-import Footer from "../components/Footer";
+import "../styles/style.scss";
 
 function StakingApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

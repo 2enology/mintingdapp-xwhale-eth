@@ -1,1 +1,0 @@
-# Xwhale Founder Project
