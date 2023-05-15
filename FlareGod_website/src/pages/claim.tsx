@@ -22,6 +22,7 @@ import {
 } from "../config";
 import { useWeb3React } from "@web3-react/core";
 import { errorAlert, successAlert } from "../components/toastGroup";
+import { WindowWithEthereum } from "../types";
 
 export default function Claim() {
   const { account } = useWeb3React();
