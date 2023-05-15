@@ -56,7 +56,7 @@ const Home: NextPage = () => {
                 </Link>
                 <Link href="/claim" passHref>
                   <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
-                    Claim
+                    Claim & Stake
                   </button>
                 </Link>
                 <Link href="/discord" passHref>

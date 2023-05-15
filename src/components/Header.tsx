@@ -57,7 +57,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full h-[80px] flex justify-between 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[20px] fixed z-[49] py-[14px] items-center px-4 backdrop-blur-lg">
+      <header className="w-full h-[80px] flex justify-between 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[20px] fixed z-[59] py-[14px] items-center px-4 backdrop-blur-lg">
         <Head>
           <link rel="icon" href="/img/logo.png" />
         </Head>
@@ -145,7 +145,7 @@ export default function Header() {
         </div>
       </header>
       {menuOpen && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 z-50 items-center justify-center bg-black opacity-95 md:hidden">
+        <div className="fixed top-0 bottom-0 left-0 right-0 z-[60] items-center justify-center bg-black opacity-95 md:hidden">
           <div className="flex items-center justify-end w-full px-3 py-4">
             <div
               className="p-1 border-[1px] border-gray-300 hover:border-white duration-300 transition-all rounded-lg

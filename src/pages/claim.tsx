@@ -24,6 +24,7 @@ import { useWeb3React } from "@web3-react/core";
 import { errorAlert, successAlert } from "../components/toastGroup";
 import { WindowWithEthereum } from "../types";
 import { stat } from "fs";
+import { rootCertificates } from "tls";
 
 export default function Claim() {
   const { account } = useWeb3React();
@@ -115,13 +116,17 @@ export default function Claim() {
     setLastClaimState(Number(lastState));
   };
 
+  const getAllData = async () => {
+    setLoadingState(true);
+    await get15ClaimData();
+    await get10RoyaltyData();
+    await getStakingAmount();
+    setLoadingState(false);
+  };
+
   useEffect(() => {
     if (account) {
-      setLoadingState(true);
-      get15ClaimData();
-      get10RoyaltyData();
-      getStakingAmount();
-      setLoadingState(false);
+      getAllData();
     }
   }, [account]);
 
@@ -258,74 +263,91 @@ export default function Claim() {
           </Link>
           <div className="flex flex-col w-full gap-4 mt-10 ">
             <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm relative flex flex-col items-start md:items-center justify-center min-h-[30vh]">
+              <div className="absolute top-0 -z-[1] right-0 flex items-center justify-center bg-white w-[100px] font-bold py-3 rounded-lg">
+                15%
+              </div>
+
               <div className="absolute top-0 bottom-0 -z-[1] left-0 right-0 flex items-center justify-center">
-                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[45px] font-bold text-red-400 opacity-60">
-                  15% Claim
+                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[40px] font-bold text-red-400 opacity-60">
+                  15% Caskback
                 </h1>
               </div>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
-                Total NFTs: {totalSupply}s
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
+                Total NFTs: {totalSupply}
               </h1>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
                 Claimable rewards: {claimableAmount}
               </h1>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
                 Lifetime rewards: {lifeTimeReward}
               </h1>
+              <br></br>
+              <br></br>
               <div
                 className="absolute bottom-0 left-0 right-0 w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400"
                 onClick={() => handleMintRewardFunc()}
               >
-                Claim Now
+                Claim Rewards
               </div>
             </div>
             <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm relative  flex flex-col items-start md:items-center justify-center min-h-[30vh]">
+              <div className="absolute top-0 -z-[1] right-0 flex items-center justify-center bg-white w-[100px] font-bold py-3 rounded-lg">
+                10%
+              </div>
               <div className="absolute top-0 bottom-0 -z-[1] left-0 right-0 flex items-center justify-center">
-                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[45px] font-bold text-red-400 opacity-60">
+                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[40px] font-bold text-red-400 opacity-60">
                   10% Royalty
                 </h1>
               </div>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
-                Total NFTs: {totalSupply}s
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
+                Total NFTs: {totalSupply}
               </h1>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
-                Claimable amount:{royaltyReward}
-              </h1>
+              {!royaltyClaimState && (
+                <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
+                  Claimable amount: {royaltyReward}
+                </h1>
+              )}
               {!royaltyClaimState ? (
                 <div
                   className="absolute bottom-0 left-0 right-0 w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400"
                   onClick={() => handleRoyaltyClaim()}
                 >
-                  Claim Now
+                  Claim Rewards
                 </div>
               ) : (
-                <h1 className="text-2xl font-bold text-yellow-300">
-                  rewards claimed, wait for new rewards
+                <h1 className="text-2xl font-bold text-yellow-100">
+                  <br></br>
+                  "Rewards claimed, wait for new rewards"
                 </h1>
               )}
             </div>
             <div className="p-2 border-[1px] border-gray-400 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm relative  flex flex-col items-start md:items-center justify-center min-h-[30vh]">
+              <div className="absolute top-0 -z-[1] right-0 flex items-center justify-center bg-white w-[100px] font-bold py-3 rounded-lg">
+                Staking
+              </div>
               <div className="absolute top-0 bottom-0 -z-[1] left-0 right-0 flex items-center justify-center">
-                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[45px] font-bold text-red-400 opacity-60">
+                <h1 className="xl:text-[80px] lg:text-[70px] md:text-[70px] text-[40px] font-bold text-red-400 opacity-60">
                   Staking
                 </h1>
               </div>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
                 Total GFLR token: {tokenAmount}
               </h1>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
                 Total NFTs: {totalSupply}
               </h1>
-              <h1 className="text-2xl font-bold text-yellow-300 md:text-3xl">
+              <h1 className="font-bold text-yellow-200 text-1xl md:text-3xl">
                 Claimable rewards: {pendingStakingReward}
               </h1>
+              <br></br>
+              <br></br>
               <div className="absolute bottom-0 left-0 right-0 flex w-full gap-2">
                 {lastClaimState === 0 && (
                   <div
                     className={`w-full py-4 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400`}
                     onClick={() => handleOnboardFunc()}
                   >
-                    On Boarding
+                    Start Starting
                   </div>
                 )}
                 {lastClaimState !== 0 && (
@@ -333,7 +355,7 @@ export default function Claim() {
                     className={`w-full py-4 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer hover:bg-gray-400`}
                     onClick={() => handleStakingClaimFunc()}
                   >
-                    Claim
+                    Claim GFLR
                   </div>
                 )}
               </div>

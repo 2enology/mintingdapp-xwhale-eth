@@ -165,7 +165,7 @@ export default function Mint() {
             <div>
               <div className="flex flex-col items-center justify-center w-full">
                 <Countdown
-                  endDateTime={1684389600000} // 1684389600000 is the timestamp of start public mint
+                  endDateTime={1684310400000} // 1684310400000 is the timestamp of start public mint
                   onCanBreed={() => {
                     setEndWhiteListState(true);
                     setMaxMintCount(7);
@@ -227,6 +227,11 @@ export default function Mint() {
                     <h1 className="text-sm font-bold text-center text-white">
                       {maxMintCount} Mint per TX allowed
                     </h1>
+				   </div>
+					<div className="flex items-center justify-center w-full mt-2">
+                    <h1 className="text-sm font-bold text-center text-white">
+                     1500 NFTs during Whitelist
+                    </h1>
                   </div>
                 </>
               ) : (
@@ -249,7 +254,7 @@ export default function Mint() {
         {loadingState && (
           <div className="fixed top-0 bottom-0 left-0 right-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 flex-col text-white">
             <ScaleLoader color="white" />
-            Minting ...
+
           </div>
         )}
       </section>
