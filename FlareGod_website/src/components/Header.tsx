@@ -5,8 +5,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 
-import { injected } from "../connecthook/connect";
-import { switchNetwork } from "../connecthook/switch-network";
+import { switchNetwork, injected } from "../connecthook/switch-network";
 import { FaWallet } from "react-icons/fa";
 
 import { FiMenu } from "react-icons/fi";
@@ -57,7 +56,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full h-[80px] flex justify-between 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[20px] fixed z-[49] py-[14px] items-center px-4">
+    <header className="w-full h-[80px] flex justify-between 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[20px] fixed z-[99] py-[14px] items-center px-4 backdrop-blur-lg">
       <Head>
         <link rel="icon" href="/img/logo.png" />
       </Head>
@@ -225,6 +224,18 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                   >
                     Mint
+                  </li>
+                </Link>
+                <Link href={"/claim"} passHref>
+                  <li
+                    className={`text-lg font-normal ${
+                      router.pathname === "/claim"
+                        ? "text-cyan-500"
+                        : "text-white"
+                    } uppercase list-none transition-all duration-300 cursor-pointer hover:text-cyan-500`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Claim
                   </li>
                 </Link>
               </div>

@@ -68,11 +68,11 @@ export default function RoadMap() {
     >
       <div className="w-full min-h-[70vh] 2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[100px] px-5 pb-5">
         <Fade direction="down">
-          <h1 className="text-[50px] md:text-[75px] text-white text-center font-extrabold py-20 uppercase">
+          <h1 className="text-[50px] md:text-[75px] text-white text-center font-extrabold py-20 uppercase z-20">
             {" "}
             RoadMap
           </h1>
-          <p className="text-2xl text-center text-green-500 -mt-[150px] font-bold uppercase">
+          <p className="text-2xl text-center text-green-500 -mt-[130px] md:-mt-[150px] font-bold uppercase z-10">
             ROADMAP OF COMPANY
           </p>
         </Fade>
@@ -83,10 +83,10 @@ export default function RoadMap() {
             NFTs utilities.
           </h1>
         </div>
-        <div className="mt-10">
-          <Slider {...settings} className="">
+        <div className="z-50 mt-10">
+          <Slider {...settings} className="z-50">
             <div className="px-3">
-              <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col">
+              <div className="w-full border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] flex min-h-[30vh] lg:flex-row flex-col rounded-md">
                 <div className="border-r-[1px] border-[#14c2a3]">
                   <h1 className="flex items-center justify-center h-full p-3 text-3xl font-bold text-white lg:justify-start lg:-rotate-90 lg:transform">
                     Idea
@@ -136,7 +136,7 @@ export default function RoadMap() {
                   />
                 </div>
                 <div className="flex flex-col items-start justify-start h-full gap-5 p-10">
-                  <h3 className="text-white text-[30px] font-bold">
+                  <h3 className="text-white md:text-[30px] text-[20px] font-bold">
                     Tokenomics design & Project marketing
                   </h3>
                   <h4 className="text-[#14c2a3]">Q2 2023</h4>
@@ -199,7 +199,7 @@ export default function RoadMap() {
           </Slider>
         </div>
       </div>
-      <div className="absolute top-0 bottom-0 md:min-h-screen lg:min-h-[120vh] xl:min-h-[60vh] min-h-[120vh] area">
+      <div className="absolute top-0 bottom-0 md:min-h-screen lg:min-h-[120vh] xl:min-h-[60vh] min-h-[120vh] area z-10">
         <ul className="circles">
           <li></li>
           <li></li>

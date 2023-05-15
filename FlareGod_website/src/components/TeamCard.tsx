@@ -8,7 +8,7 @@ export default function TeamCard() {
       <div className="border-[1px] border-gray-800 p-3">
         <img
           src={`/img/nft/1.png`}
-          className="z-10 w-90"
+          className="z-10 rounded-md w-90"
           alt="nftCollectionSlider"
         />
         <div className="relative z-20 w-full p-3 -mt-8">

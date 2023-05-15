@@ -8,7 +8,7 @@ const CollectionSlider = () => {
     arrows: false,
     infinite: true,
     slidesToShow: 6,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     autoplay: true,
     speed: 3000,
     autoplaySpeed: 3000,
@@ -66,7 +66,7 @@ const CollectionSlider = () => {
     <>
       <Slider {...settings} className="my-10 slider">
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img.png`}
               className="w-90"
@@ -75,7 +75,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img2.png`}
               className="w-90"
@@ -84,7 +84,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img3.png`}
               className="w-90"
@@ -93,7 +93,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img4.png`}
               className="w-90"
@@ -102,7 +102,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img5.png`}
               className="w-90"
@@ -111,7 +111,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img6.png`}
               className="w-90"
@@ -120,7 +120,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img7.png`}
               className="w-90"
@@ -129,7 +129,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img8.png`}
               className="w-90"
@@ -138,7 +138,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img9.png`}
               className="w-90"
@@ -147,7 +147,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img10.png`}
               className="w-90"
@@ -156,7 +156,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img11.png`}
               className="w-90"
@@ -165,7 +165,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img12.png`}
               className="w-90"
@@ -174,7 +174,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img13.png`}
               className="w-90"
@@ -183,7 +183,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img14.png`}
               className="w-90"
@@ -192,7 +192,7 @@ const CollectionSlider = () => {
           </div>
         </div>
         <div className="px-3">
-          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md">
+          <div className="w-full p-2 border-2 border-[#14c2a3] bg-white bg-opacity-10 backdrop-blur-md rounded-md">
             <img
               src={`/img/nft/v4-slider-img15.png`}
               className="w-90"

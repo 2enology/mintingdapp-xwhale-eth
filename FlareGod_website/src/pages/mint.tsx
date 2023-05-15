@@ -6,6 +6,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Countdown from "../components/Countdown";
 import { motion } from "framer-motion";
+import { ScaleLoader } from "react-spinners";
+import { ethers } from "ethers";
+
+import MINTCONTRACT_ABI from "../../public/abis/MINTCONTACT_ABI.json";
+import GFLRTOKENCONTRACT_ABI from "../../public/abis/GFLRTOKENCONTRACT_ABI.json";
+import {
+  MINTCONTRACT_ADDR,
+  PUBLICMINTPRICE,
+  TOKENCONTRACT_ADDR,
+  WHITELISTMINTPRICE,
+} from "../config";
+import { useWeb3React } from "@web3-react/core";
+import { successAlert } from "../components/toastGroup";
 
 export default function Mint() {
   const settings = {
@@ -20,15 +33,98 @@ export default function Mint() {
     fade: true,
   };
 
+  const { account } = useWeb3React();
   const [mintCount, setMintCount] = useState<number>(1);
+  const [totalSupply, setTotalSupply] = useState<number>(0);
+  const [loadingState, setLoadingState] = useState<boolean>(false);
+  const [whtieListMintState, setWhiteListMintState] = useState<boolean>(false);
+  const [endWhiteListState, setEndWhiteListState] = useState<boolean>(false);
+  const [maxMintCount, setMaxMintCount] = useState(5);
+
+  const provider =
+    typeof window !== "undefined" && (window as WindowWithEthereum).ethereum
+      ? new ethers.providers.Web3Provider(
+          (window as WindowWithEthereum).ethereum
+        )
+      : null;
+  const Signer = provider?.getSigner();
+
+  const MINTCONTRACT = new ethers.Contract(
+    MINTCONTRACT_ADDR,
+    MINTCONTRACT_ABI,
+    Signer
+  );
 
   const handleMintFunc = async () => {
-    console.log("mintcount", mintCount);
+    if (whtieListMintState && !endWhiteListState) {
+      console.log("whitelsit mint");
+      setLoadingState(true);
+      await MINTCONTRACT.mintWhiteList(mintCount, {
+        value: ethers.utils.parseEther(
+          (WHITELISTMINTPRICE * mintCount).toString()
+        ),
+        gasLimit: 300000 * mintCount,
+      })
+        .then((tx: any) => {
+          tx.wait()
+            .then(() => {
+              successAlert("Mint Successful!");
+              getMintData();
+              setLoadingState(false);
+            })
+            .catch(() => {
+              setLoadingState(false);
+              getMintData();
+            });
+        })
+        .catch(() => {
+          setLoadingState(false);
+          getMintData();
+        });
+    } else {
+      setLoadingState(true);
+      await MINTCONTRACT.mint(mintCount, {
+        value: ethers.utils.parseEther(
+          (PUBLICMINTPRICE * mintCount).toString()
+        ),
+        gasLimit: 300000 * mintCount,
+      })
+        .then((tx: any) => {
+          tx.wait()
+            .then(() => {
+              successAlert("Mint Successful!");
+              getMintData();
+              setLoadingState(false);
+            })
+            .catch(() => {
+              setLoadingState(false);
+              getMintData();
+            });
+        })
+        .catch(() => {
+          setLoadingState(false);
+          getMintData();
+        });
+    }
+  };
+
+  const getMintData = async () => {
+    setLoadingState(true);
+    const counts = await MINTCONTRACT.totalSupply();
+    setTotalSupply(Number(counts));
+    const state = await MINTCONTRACT.isWhiteListActive();
+    setWhiteListMintState(state);
+    console.log("setWhiteListMintState", state);
+    setLoadingState(false);
   };
 
   useEffect(() => {
-    console.log("mintcount", mintCount);
-  }, [mintCount]);
+    getMintData();
+    const interval = setInterval(() => {
+      getMintData();
+    }, 60000); // 1 minute
+    return () => clearInterval(interval);
+  }, [account]);
 
   return (
     <motion.section
@@ -67,10 +163,12 @@ export default function Mint() {
             </div>
             <div>
               <div className="flex flex-col items-center justify-center w-full">
-                <h1 className="text-xl text-white">WhiteList End : </h1>
                 <Countdown
-                  endDateTime={1684351683000} // 1209600000 is the timestamp of 2 weeks
-                  onCanBreed={() => console.log("Whitelist mint ended")}
+                  endDateTime={1684389600000} // 1684389600000 is the timestamp of start public mint
+                  onCanBreed={() => {
+                    setEndWhiteListState(true);
+                    setMaxMintCount(7);
+                  }}
                 />
               </div>
               <div className="flex items-center justify-center w-full mt-10">
@@ -98,13 +196,13 @@ export default function Mint() {
                 <h1 className="text-xl font-bold text-white">{mintCount}</h1>
                 <div
                   className={`px-6 py-4 text-xl font-bold text-center text-black transition-all duration-300 rounded-md ${
-                    mintCount >= 7
+                    mintCount >= maxMintCount
                       ? "bg-gray-600 cursor-not-allowed"
                       : "bg-gray-200 hover:bg-gray-400 cursor-pointer "
                   }`}
                   onClick={() =>
-                    mintCount >= 7
-                      ? setMintCount(7)
+                    mintCount >= maxMintCount
+                      ? setMintCount(maxMintCount)
                       : setMintCount(mintCount + 1)
                   }
                 >
@@ -113,20 +211,28 @@ export default function Mint() {
               </div>
               <div className="flex items-center justify-center w-full mt-5">
                 <h1 className="text-2xl font-bold text-center text-white">
-                  0 / 5000
+                  {totalSupply} / 5000
                 </h1>
               </div>
-              <div
-                className="w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer lg:w-auto hover:bg-gray-400"
-                onClick={() => handleMintFunc()}
-              >
-                Mint Now
-              </div>
-              <div className="flex items-center justify-center w-full mt-2">
-                <h1 className="text-sm font-bold text-center text-white">
-                  7 Mint per TX allowed
+              {totalSupply !== 5000 ? (
+                <>
+                  <div
+                    className="w-full px-10 py-4 mt-10 font-bold text-center text-black transition-all duration-300 bg-white rounded-md cursor-pointer lg:w-auto hover:bg-gray-400"
+                    onClick={() => handleMintFunc()}
+                  >
+                    Mint Now
+                  </div>
+                  <div className="flex items-center justify-center w-full mt-2">
+                    <h1 className="text-sm font-bold text-center text-white">
+                      {maxMintCount} Mint per TX allowed
+                    </h1>
+                  </div>
+                </>
+              ) : (
+                <h1 className="text-red-500 text-3xl text-center font-bold">
+                  Sold Out!
                 </h1>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -139,6 +245,12 @@ export default function Mint() {
         <div className="light x7"></div>
         <div className="light x8"></div>
         <div className="light x9"></div>
+        {loadingState && (
+          <div className="fixed top-0 bottom-0 left-0 right-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 flex-col text-white">
+            <ScaleLoader color="white" />
+            Minting ...
+          </div>
+        )}
       </section>
     </motion.section>
   );

@@ -27,7 +27,6 @@ const settings = {
 };
 
 const Home: NextPage = () => {
-  const { account } = useWeb3React();
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,15 +48,23 @@ const Home: NextPage = () => {
                 Welcome to Flaregods, 5000 unique and intricately designed
                 Flaregods warriors.
               </p>
-              <Link href="/mint" passHref>
-                <button className="w-full px-10 py-4 mt-10 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
-                  Mint now
-                </button>
-              </Link>
-              -
-              <button className="w-full px-10 py-4 mt-2 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
-                Discord
-              </button>
+              <div className="flex flex-col items-center justify-center gap-2 md:justify-start md:flex-row">
+                <Link href="/mint" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Mint
+                  </button>
+                </Link>
+                <Link href="/claim" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Claim
+                  </button>
+                </Link>
+                <Link href="/discord" passHref>
+                  <button className="w-full px-10 py-4 mt-5 font-bold text-black transition-all duration-300 bg-white rounded-md lg:w-auto hover:bg-gray-400">
+                    Discord
+                  </button>
+                </Link>
+              </div>
             </div>
           </Bounce>
           <div className="flex items-center justify-center w-full lg:justify-end">
@@ -79,15 +86,6 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          {/* <div className="light x1"></div>
-          <div className="light x2"></div>
-          <div className="light x3"></div>
-          <div className="light x4"></div>
-          <div className="light x5"></div>
-          <div className="light x6"></div>
-          <div className="light x7"></div>
-          <div className="light x8"></div>
-          <div className="light x9"></div> */}
         </div>
       </section>
       <About />

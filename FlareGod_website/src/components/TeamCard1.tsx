@@ -1,5 +1,3 @@
-
-
 export default function TeamCard1() {
   return (
     <div className="relative w-full p-3">
@@ -10,7 +8,7 @@ export default function TeamCard1() {
       <div className="border-[1px] border-gray-800 p-3">
         <img
           src={`/img/nft/2.png`}
-          className="z-10 w-90"
+          className="z-10 rounded-md w-90"
           alt="nftCollectionSlider"
         />
         <div className="relative z-20 w-full p-3 -mt-8">
@@ -22,4 +20,3 @@ export default function TeamCard1() {
     </div>
   );
 }
-

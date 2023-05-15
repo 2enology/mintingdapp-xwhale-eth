@@ -18,8 +18,8 @@ export default function About() {
         </Fade>
         <Fade>
           <div className="grid w-full grid-cols-1 gap-10 mt-20 md:grid-cols-2">
-            <div className="">
-              <h1 className="text-3xl font-bold text-white uppercase">
+            <div className="rounded-lg">
+              <h1 className="text-2xl font-bold text-center text-white uppercase md:text-3xl">
                 WHAT IS Flaregods?
               </h1>
               <p className="text-xl font-normal text-gray-400">
@@ -52,17 +52,17 @@ export default function About() {
                 our project and our artwork, rather than on us as individuals.
               </p>
             </div>
-            <div className="flex flex-col gap-7">
-              <div className="flex flex-col gap-4 border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] p-3">
+            <div className="flex flex-col rounded-md gap-7">
+              <div className="flex flex-col gap-4 border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] p-3 rounded-md">
                 <p className="text-3xl font-bold text-white">The Mint?</p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   Minting will be open for all, Whitelist will have no limit
                   (20% discount). 15% each mint is shared to all holders, the
                   earlier you mint & the more NFTs you hold, the more rewards
                   you can claim.
                 </p>
               </div>
-              <div className="flex flex-col gap-4 border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] p-3">
+              <div className="flex flex-col gap-4 border-[1px] border-[#14c2a3] shadow-2xl shadow-[#22B78F80] p-3 rounded-md">
                 <p className="text-3xl font-bold text-white">
                   What are the benefits?
                 </p>
@@ -71,20 +71,20 @@ export default function About() {
                   designed Flaregod warriors, you'll receive the following
                   benefits:<br></br>
                 </p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   15% cashback on every minted Flaregod.<br></br>
                 </p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   10% of every sale made on the secondary marketplace goes to
                   holders.<br></br>
                 </p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   Receive 10k GFlare (GFLR) token with every mint.<br></br>
                 </p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   Secret progam - FlareGods NFTs & GFLARE token.<br></br>
                 </p>
-                <p className="text-2xl font-normal text-red-400">
+                <p className="text-lg font-normal text-red-400 md:text-2xl">
                   Not only will you be supporting our project and owning a
                   one-of-a-kind piece of artwork, but you'll also have the
                   opportunity to earn a passive income by holding your Flaregod.

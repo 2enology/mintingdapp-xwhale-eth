@@ -10,29 +10,31 @@ export default function Collection() {
             {" "}
             Collection
           </h1>
-          <p className="text-2xl text-center text-green-500 -mt-[70px] font-bold uppercase">
+          <p className="text-2xl text-center text-green-500 md:-mt-[70px] -mt-[50px] font-bold uppercase">
             Collection
           </p>
         </Fade>
         <div className="w-full mt-20">
           <CollectionSlider />
         </div>
-        <Fade>
-          <div className="flex flex-col gap-5">
-            <h1 className="md:text-[100px] text-[50px] font-extrabold text-center text-white">
-              5000
-            </h1>
-            <h1 className="text-xl text-center text-gray-400 uppercase">
-              Total Items in collection
-            </h1>
-            <h1 className="text-xl text-center text-gray-400 uppercase">
-              5000 Flaregods; 12 different traits. 10 backgrounds, 4 Angelic
-              Wings, 8 Divine Attire, 4 Divine Dazzel, 11 Headdress, 3 Mystic
-              Vel, 7 Radiance, 6 Radiant Gaze, 10 Sentinel Plate, 10 Weapons &
-              More.
-            </h1>
-          </div>
-        </Fade>
+        <div className="2xl:px-[300px] xl:px-[200px] lg:px-[100px] md:px-[100px] px-5  flex lg:flex-row flex-col-reverse w-full">
+          <Fade>
+            <div className="flex flex-col gap-5">
+              <h1 className="md:text-[100px] text-[50px] font-extrabold text-center text-white">
+                5000
+              </h1>
+              <h1 className="text-xl text-center text-gray-400 uppercase">
+                Total Items in collection
+              </h1>
+              <h1 className="text-xl text-center text-gray-400 uppercase">
+                5000 Flaregods; 12 different traits. 10 backgrounds, 4 Angelic
+                Wings, 8 Divine Attire, 4 Divine Dazzel, 11 Headdress, 3 Mystic
+                Vel, 7 Radiance, 6 Radiant Gaze, 10 Sentinel Plate, 10 Weapons &
+                More.
+              </h1>
+            </div>
+          </Fade>
+        </div>
       </div>
     </section>
   );
